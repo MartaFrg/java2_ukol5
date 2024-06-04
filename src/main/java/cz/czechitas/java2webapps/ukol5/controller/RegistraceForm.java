@@ -4,25 +4,27 @@ import jakarta.validation.constraints.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Period;
+import java.util.Calendar;
 
 public class RegistraceForm {
-    @NotBlank
+    @NotBlank(message="Vyplňte křestní jméno dítěte!")
     private String jmeno;
-    @NotBlank
+    @NotBlank(message="Vyplňte příjmení dítěte!")
     private String prijmeni;
-    @NotBlank
+    @NotBlank(message="Vyberte pohlaví dítěte!")
     private String pohlavi;
-    @NotBlank
+    @NotBlank(message="Vyberte termín tábora!")
     private String turnus;
-    //@NotBlank
-    @PastOrPresent
-    @DateTimeFormat//(iso = DateTimeFormat.ISO.DATE)
+    @NotNull(message="Zadejte platné datum narození dítěte!")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @PastOrPresent(message="Zadejte platné datum narození dítěte!")
     private LocalDate narozeni;
-    //@Min(9)
-    //@Max(15)
+    @Min(value = 9, message = "Věk dítěte musí být více než 9 let!")
+    @Max(value = 15, message = "Věk dítěte musí být méně než 15 let!")
     private int vek;
-    @Email
+    @Email(message="Formát emailu je neplatný!")
     private String email;
     private String telefon;
 
@@ -59,6 +61,13 @@ public class RegistraceForm {
 
     public void setNarozeni(LocalDate narozeni) {
         this.narozeni = narozeni;
+        //Period period = narozeni.until(LocalDate.now());
+        //this.vek = period.getYears();
+    }
+
+    public void setVek(int vek) {
+        Period period = this.narozeni.until(LocalDate.now());
+        this.vek = period.getYears();
     }
 
     public String getTurnus() {
@@ -70,8 +79,7 @@ public class RegistraceForm {
     }
 
     public int getVek() {
-        Period period = narozeni.until(LocalDate.now());
-        this.vek = period.getYears();
+
         return vek;
     }
 

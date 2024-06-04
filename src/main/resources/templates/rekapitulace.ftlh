@@ -12,12 +12,13 @@
 <body>
 <main>
     <h1>Registrace na letní dětský tábor</h1>
-    <form class="vizitka--nova" action="/" method="post">
+    <form class="vizitka--nova" action="/" method="get">
         <label for="jmeno" class="radek">Jméno:</label>
         <span>${registrace.jmeno}</span>
         <label for="prijmeni" class="radek">Příjmení:</label>
         <span>${registrace.prijmeni}</span>
-        <label for="narozeni" class="radek">Datum narození:</label>
+        <label for="narozeni" class="radek">Věk dítěte:</label>
+        <span>${registrace.vek}</span>
         <label for="pohlavi" class="radek">Pohlaví:</label>
         <span>${registrace.pohlavi}</span>
         <label for="turnus" class="radek">Turnus:</label>
