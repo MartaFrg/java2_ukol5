@@ -23,7 +23,7 @@ public class RegistraceForm {
     private LocalDate narozeni;
     @Min(value = 9, message = "Věk dítěte musí být více než 9 let!")
     @Max(value = 15, message = "Věk dítěte musí být méně než 15 let!")
-    private int vek;
+    private Integer vek;
     @Email(message="Formát emailu je neplatný!")
     private String email;
     private String telefon;
@@ -61,13 +61,9 @@ public class RegistraceForm {
 
     public void setNarozeni(LocalDate narozeni) {
         this.narozeni = narozeni;
-        //Period period = narozeni.until(LocalDate.now());
-        //this.vek = period.getYears();
-    }
-
-    public void setVek(int vek) {
-        Period period = this.narozeni.until(LocalDate.now());
-        this.vek = period.getYears();
+        if (narozeni!=null){
+        Period period = narozeni.until(LocalDate.now());
+        this.vek = period.getYears();} //else {this.vek=null;}
     }
 
     public String getTurnus() {
@@ -78,8 +74,7 @@ public class RegistraceForm {
         this.turnus = turnus;
     }
 
-    public int getVek() {
-
+    public Integer getVek() {
         return vek;
     }
 

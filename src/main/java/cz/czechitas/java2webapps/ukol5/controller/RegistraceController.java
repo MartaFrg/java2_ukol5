@@ -28,8 +28,6 @@ public class RegistraceController {
     if (bindingResult.hasErrors()) {
       return "/formular";
     }
-    ModelAndView rekapitulace = new ModelAndView("rekapitulace");
-    rekapitulace.addObject("registrace", registrace);
     return "/rekapitulace";
   }
 }

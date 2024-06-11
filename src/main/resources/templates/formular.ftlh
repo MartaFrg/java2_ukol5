@@ -26,7 +26,7 @@
                 <label for="narozeni" class="radek">Datum narození:</label>
                 [@spring.formInput fieldType ="date" path="registrace.narozeni" /]
                 <div class="error">[@spring.showErrors "<br>"/]</div>
-                <input type="hidden"[@spring.formInput path="registrace.vek" /]>
+                <input type="hidden"[@spring.formInput path="registrace.vek" /]
                 <div class="error">[@spring.showErrors "<br>"/]</div>
 
                 <label for="pohlavi" class="radek">Pohlaví:</label>
